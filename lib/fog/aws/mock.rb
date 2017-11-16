@@ -133,6 +133,9 @@ module Fog
       def self.internet_gateway_id
         "igw-#{Fog::Mock.random_hex(8)}"
       end
+      def self.nat_gateway_id
+        "nat-#{Fog::Mock.random_hex(8)}"
+      end
       def self.dhcp_options_id
         "dopt-#{Fog::Mock.random_hex(8)}"
       end
