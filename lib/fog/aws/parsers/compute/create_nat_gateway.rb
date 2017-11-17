@@ -34,10 +34,11 @@ module Fog
               elsif @in_address_set
                 case name
                   when 'item'
-                    @nat_gateway['natGatewayAddressSet'][@address['key']] = @address['value']
+                    @nat_gateway['natGatewayAddressSet'] = @address
                     @address = {}
-                  when 'key', 'value'
+                  when 'allocationId'
                     @address[name] = value
+                    @nat_gateway[name] = value
                   when 'natGatewayAddressSet'
                     @in_address_set = false
                 end
