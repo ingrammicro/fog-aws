@@ -7,10 +7,11 @@ module Fog
             @association = { 'routeTableAssociationId' => nil, 'routeTableId' => nil, 'subnetId' => nil, 'main' => false }
             @in_association_set = false
             @in_route_set = false
+            @in_propagating_vgw_set = false
             @route = { 'destinationCidrBlock' => nil, 'gatewayId' => nil, 'instanceId' => nil, 'instanceOwnerId' => nil, 'networkInterfaceId' => nil, 'vpcPeeringConnectionId' => nil, 'natGatewayId' => nil, 'state' => nil, 'origin' => nil }
             @response = { 'routeTableSet' => [] }
             @tag = {}
-            @route_table = { 'associationSet' => [], 'tagSet' => {}, 'routeSet' => [] }
+            @route_table = { 'associationSet' => [], 'tagSet' => {}, 'routeSet' => [], 'propagatingVgwSet' => [] }
           end
 
           def start_element(name, attrs = [])
@@ -22,6 +23,8 @@ module Fog
               @in_tag_set = true
             when 'routeSet'
               @in_route_set = true
+            when 'propagatingVgwSet'
+              @in_propagating_vgw_set = true
             end
           end
 
@@ -61,6 +64,13 @@ module Fog
                 @route = { 'destinationCidrBlock' => nil, 'gatewayId' => nil, 'instanceId' => nil, 'instanceOwnerId' => nil, 'networkInterfaceId' => nil, 'vpcPeeringConnectionId' => nil, 'natGatewayId' => nil, 'state' => nil, 'origin' => nil }
               when 'routeSet'
                 @in_route_set = false
+              end
+            elsif @in_propagating_vgw_set
+              case name
+              when 'gatewayId'
+                @route_table['propagatingVgwSet'] << value
+              when 'propagatingVgwSet'
+                @in_propagating_vgw_set = false
               end
             else
               case name

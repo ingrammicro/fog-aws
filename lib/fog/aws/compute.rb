@@ -49,6 +49,8 @@ module Fog
       collection  :subnets
       model       :vpc
       collection  :vpcs
+      model       :vpn_connection
+      collection  :vpn_connections
       model       :vpn_gateway
       collection  :vpn_gateways
 
@@ -85,6 +87,8 @@ module Fog
       request :create_tags
       request :create_volume
       request :create_vpc
+      request :create_vpn_connection
+      request :create_vpn_connection_route
       request :create_vpn_gateway
       request :copy_image
       request :copy_snapshot
@@ -106,6 +110,8 @@ module Fog
       request :delete_tags
       request :delete_volume
       request :delete_vpc
+      request :delete_vpn_connection
+      request :delete_vpn_connection_route
       request :delete_vpn_gateway
       request :deregister_image
       request :describe_account_attributes
@@ -143,16 +149,19 @@ module Fog
       request :describe_vpc_attribute
       request :describe_vpc_classic_link
       request :describe_vpc_classic_link_dns_support
+      request :describe_vpn_connections
       request :describe_vpn_gateways
       request :detach_network_interface
       request :detach_internet_gateway
       request :detach_volume
       request :detach_vpn_gateway
       request :detach_classic_link_vpc
+      request :disable_vgw_route_propagation
       request :disable_vpc_classic_link
       request :disable_vpc_classic_link_dns_support
       request :disassociate_address
       request :disassociate_route_table
+      request :enable_vgw_route_propagation
       request :enable_vpc_classic_link
       request :enable_vpc_classic_link_dns_support
       request :get_console_output
