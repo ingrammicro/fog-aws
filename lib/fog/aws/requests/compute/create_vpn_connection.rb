@@ -44,15 +44,13 @@ module Fog
         #
         # {Amazon API Reference}[http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpnConnection.html]
         def create_vpn_connection(customer_gateway_id, vpn_gateway_id, type, options = {})
-          params = {
+          request({
             'Action'            => 'CreateVpnConnection',
             'CustomerGatewayId' => customer_gateway_id,
             'VpnGatewayId'      => vpn_gateway_id,
             'Type'              => type,
             :parser             => Fog::Parsers::Compute::AWS::CreateVpnConnection.new
-          }.merge!(options)
-          p params
-          request(params)
+          }.merge!(options))
         end
       end
 

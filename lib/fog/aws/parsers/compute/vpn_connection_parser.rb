@@ -4,7 +4,7 @@ module Fog
       module AWS
         class VpnConnectionParser < Fog::Parsers::Base
           def reset_vpn_connection
-            @vpn_connection = { 'options' => {}, 'tagSet' => {}, 'routes' => [], 'vgwTelemetry' => [] }
+            @vpn_connection = { 'options' => {}, 'tagSet' => {}, 'routes' => {}, 'vgwTelemetry' => [] }
             @in_tag_set     = false
             @in_options = false
             @in_routes = false
@@ -53,7 +53,8 @@ module Fog
             elsif @in_routes
               case name
               when 'item'
-                @vpn_connection['routes'] << @route
+                cidr = @route.delete('destinationCidrBlock')
+                @vpn_connection['routes'][cidr] = @route
                 @route = {}
               when 'destinationCidrBlock', 'source', 'state'
                 @route[name] = value

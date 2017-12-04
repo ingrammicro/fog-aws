@@ -57,10 +57,18 @@ module Fog
             reload
           end
 
+          def attached?(vpc_id)
+            attachments[vpc_id] == 'attached'
+          end
+
           def detach(vpc_id)
             requires :vpn_gateway_id
             service.detach_vpn_gateway(vpc_id, vpn_gateway_id)
             reload
+          end
+
+          def detached?(vpc_id)
+            attachments[vpc_id] == (nil || 'detached')
           end
         end
       end
