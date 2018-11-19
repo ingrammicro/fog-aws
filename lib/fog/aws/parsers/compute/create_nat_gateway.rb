@@ -41,16 +41,17 @@ module Fog
                   when 'natGatewayAddressSet'
                     @in_address_set = false
                 end
-              else
+              else                
                 case name
-                when 'natGatewayId'
-                  @nat_gateway[name] = value
-                when 'natGateway'
-                  @response['natGatewaySet'] << @nat_gateway
-                  @nat_gateway = { 'tagSet' => {} }
-                  @nat_gateway = { 'natGatewayAddressSet' => {} }
-                when 'requestId'
-                  @response[name] = value
+                  when 'natGatewayId', 'state', 'subnetId', 'vpcId', 'failureMessage', 'failureCode', 'createTime', 'deleteTime'
+                    @nat_gateway[name] = value
+                  when 'createTime', 'deleteTime'
+                    @nat_gateway[name] = Time.parse(value)
+                  when 'natGateway'
+                    @response['natGatewaySet'] << @nat_gateway
+                    @nat_gateway = { 'natGatewayAddressSet' => {}, 'tagSet' => {} }
+                  when 'requestId'
+                    @response[name] = value
                 end
               end
             end
