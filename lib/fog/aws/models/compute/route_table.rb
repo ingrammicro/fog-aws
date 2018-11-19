@@ -6,6 +6,7 @@ module Fog
 
         attribute :vpc_id,           :aliases => 'vpcId'
         attribute :routes,           :aliases => 'routeSet'
+        attribute :propagating_vgws, :aliases => 'propagatingVgwSet'
         attribute :associations,     :aliases => 'associationSet'
         attribute :tags,             :aliases => 'tagSet'
 
@@ -47,6 +48,18 @@ module Fog
           new_attributes = data.reject {|key,value| key == 'requestId'}
           merge_attributes(new_attributes)
           true
+        end
+
+        def enable_vgw_propagation(vpn_gateway_id)
+          requires :id
+          service.enable_vgw_route_propagation(vpn_gateway_id, id)
+          reload
+        end
+
+        def disable_vgw_propagation(vpn_gateway_id)
+          requires :id
+          service.disable_vgw_route_propagation(vpn_gateway_id, id)
+          reload
         end
 
         private
