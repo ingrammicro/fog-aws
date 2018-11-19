@@ -8,11 +8,11 @@ module Fog
           attribute :failure_code,                  :aliases => 'failureCode'
           attribute :failure_message,               :aliases => 'failureMessage'
           attribute :nat_gateway_address_set,       :aliases => 'natGatewayAddressSet'
-          attribute :provisioned_bandwidth,         :aliases => 'provisionedBandwidth'
           attribute :state,                         :aliases => 'state'
           attribute :subnet_id,                     :aliases => 'subnetId'
           attribute :tag_set,                       :aliases => 'tagSet'
           attribute :vpc_id,                        :aliases => 'vpcId'
+          attribute :allocation_id,                 :aliases => 'allocationId'
 
           def ready?
             requires :state
@@ -22,7 +22,7 @@ module Fog
           def initialize(attributes={})
             super
           end
-  
+          
           # Removes an existing nat gateway
           #
           # nat_gateway.destroy
@@ -49,7 +49,7 @@ module Fog
           #
           def save
             requires :subnet_id, :allocation_id
-            data = service.create_nat_gateway(subnet_id, allocation_id).body['natGatewaySet']
+            data = service.create_nat_gateway(subnet_id, allocation_id).body['natGatewaySet'].first
             new_attributes = data.reject {|key,value| key == 'requestId'}
             merge_attributes(new_attributes)
             true
