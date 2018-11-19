@@ -195,6 +195,7 @@ module Fog
       request :start_instances
       request :stop_instances
       request :monitor_instances
+      request :unassign_private_ip_addresses
       request :unmonitor_instances
 
       class InvalidURIError < Exception; end
