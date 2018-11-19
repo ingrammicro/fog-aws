@@ -57,9 +57,8 @@ module Fog
         #
         def save
           requires :customer_gateway_id, :vpn_gateway_id, :type
-          opts = {
-            'Options.StaticRoutesOnly' => options['staticRoutesOnly']
-          }
+          opts = {}
+          opts['Options.StaticRoutesOnly'] = options['staticRoutesOnly'] unless options.nil?
           tunnel_options.each_with_index do |tunnel, idx|
             tunnel.each do |key, value|
               opts["Options.TunnelOptions.#{idx+1}.#{key}"] = tunnel[key]
@@ -78,10 +77,20 @@ module Fog
           reload
         end
 
+        def route_created?(destination_cidr_block)
+          route = routes[destination_cidr_block]
+          !route.nil? && route['state'] == 'available'
+        end
+
         def delete_route(destination_cidr_block)
           requires :vpn_connection_id
           service.delete_vpn_connection_route(destination_cidr_block, vpn_connection_id)
           reload
+        end
+
+        def route_deleted?(destination_cidr_block)
+          route = routes[destination_cidr_block]
+          route.nil? || route['state'] == 'deleted'
         end
       end
     end
