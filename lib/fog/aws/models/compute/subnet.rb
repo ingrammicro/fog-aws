@@ -51,7 +51,6 @@ module Fog
           requires :vpc_id, :cidr_block
           options = {}
           options['AvailabilityZone'] = availability_zone if availability_zone
-          options['mapPublicIpOnLaunch'] = map_public_ip_on_launch if map_public_ip_on_launch
           data = service.create_subnet(vpc_id, cidr_block, options).body['subnet']
           new_attributes = data.reject {|key,value| key == 'requestId'}
           merge_attributes(new_attributes)
