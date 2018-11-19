@@ -13,6 +13,11 @@ module Fog
           attribute :subnet_id,                     :aliases => 'subnetId'
           attribute :tag_set,                       :aliases => 'tagSet'
           attribute :vpc_id,                        :aliases => 'vpcId'
+
+          def ready?
+            requires :state
+            state == 'available'
+          end
   
           def initialize(attributes={})
             super
@@ -43,7 +48,8 @@ module Fog
           # requestId and a natGateway object
           #
           def save
-            data = service.create_nat_gateway.body['natGatewaySet'].first
+            requires :subnet_id, :allocation_id
+            data = service.create_nat_gateway(subnet_id, allocation_id).body['natGatewaySet']
             new_attributes = data.reject {|key,value| key == 'requestId'}
             merge_attributes(new_attributes)
             true
