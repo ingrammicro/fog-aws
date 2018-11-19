@@ -13,6 +13,8 @@ module Fog
       model_path 'fog/aws/models/compute'
       model       :address
       collection  :addresses
+      model       :customer_gateway
+      collection  :customer_gateways
       model       :dhcp_options
       collection  :dhcp_options
       model       :flavor
@@ -47,6 +49,8 @@ module Fog
       collection  :subnets
       model       :vpc
       collection  :vpcs
+      model       :vpn_gateway
+      collection  :vpn_gateways
 
       request_path 'fog/aws/requests/compute'
       request :allocate_address
@@ -58,9 +62,11 @@ module Fog
       request :attach_classic_link_vpc
       request :attach_internet_gateway
       request :attach_volume
+      request :attach_vpn_gateway
       request :authorize_security_group_egress
       request :authorize_security_group_ingress
       request :cancel_spot_instance_requests
+      request :create_customer_gateway
       request :create_dhcp_options
       request :create_internet_gateway
       request :create_image
@@ -79,8 +85,10 @@ module Fog
       request :create_tags
       request :create_volume
       request :create_vpc
+      request :create_vpn_gateway
       request :copy_image
       request :copy_snapshot
+      request :delete_customer_gateway
       request :delete_dhcp_options
       request :delete_internet_gateway
       request :delete_key_pair
@@ -98,10 +106,12 @@ module Fog
       request :delete_tags
       request :delete_volume
       request :delete_vpc
+      request :delete_vpn_gateway
       request :deregister_image
       request :describe_account_attributes
       request :describe_addresses
       request :describe_availability_zones
+      request :describe_customer_gateways
       request :describe_classic_link_instances
       request :describe_dhcp_options
       request :describe_images
@@ -134,9 +144,11 @@ module Fog
       request :describe_vpc_attribute
       request :describe_vpc_classic_link
       request :describe_vpc_classic_link_dns_support
+      request :describe_vpn_gateways
       request :detach_network_interface
       request :detach_internet_gateway
       request :detach_volume
+      request :detach_vpn_gateway
       request :detach_classic_link_vpc
       request :disable_vpc_classic_link
       request :disable_vpc_classic_link_dns_support
