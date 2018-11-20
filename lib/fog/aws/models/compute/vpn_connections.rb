@@ -6,7 +6,7 @@ module Fog
       class VpnConnections < Fog::Collection
         attribute :filters
 
-        model Fog::Compute::AWS::VpnConnection
+        model Fog::AWS::Compute::VpnConnection
 
         # Creates a new VPN connection
         #
@@ -17,7 +17,7 @@ module Fog
         # Returns the details of the new VPN connection
         #
         #>> AWS.vpn_connections.new(customer_gateway_id: "cgw-11223344", vpn_gateway_id: "vgw-11223344", type: "ipsec.1", options)
-        #    <Fog::Compute::AWS::VpnConnection
+        #    <Fog::AWS::Compute::VpnConnection
         #     category<~String> - Category of the VPN conntection.
         #     customer_gateway_configuration<~String> - Configuration information for the VPN connection's customer gateway (XML).
         #     customer_gateway_id<~String> - The ID of the customer gateway.
@@ -60,7 +60,7 @@ module Fog
         #  <Fog::AWS::Compute::VpnConnections
         #    filters={}
         #    [
-        #      <Fog::Compute::AWS::VpnConnection
+        #      <Fog::AWS::Compute::VpnConnection
         #        category<~String> - Category of the VPN conntection.
         #        customer_gateway_configuration<~String> - Configuration information for the VPN connection's customer gateway (XML).
         #        customer_gateway_id<~String> - The ID of the customer gateway.

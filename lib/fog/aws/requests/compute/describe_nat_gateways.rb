@@ -36,7 +36,7 @@ module Fog
           request({
             'Action' => 'DescribeNatGateways',
             :idempotent => true,
-            :parser => Fog::Parsers::Compute::AWS::DescribeNatGateways.new
+            :parser => Fog::Parsers::AWS::Compute::DescribeNatGateways.new
           }.merge!(params))
         end
       end

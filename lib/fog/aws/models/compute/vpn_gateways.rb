@@ -6,7 +6,7 @@ module Fog
       class VpnGateways < Fog::Collection
         attribute :filters
 
-        model Fog::Compute::AWS::VpnGateway
+        model Fog::AWS::Compute::VpnGateway
 
         # Creates a new VPN gateway
         #
@@ -17,7 +17,7 @@ module Fog
         # Returns the details of the new VPN gateway
         #
         #>> AWS.vpn_gateways.new(type: "ipsec.1", options)
-        #    <Fog::Compute::AWS::VpnGateway
+        #    <Fog::AWS::Compute::VpnGateway
         #      vpn_gateway_id="vgw-11223344",
         #      amazon_side_asn=65001,
         #      attachments=[],
@@ -44,7 +44,7 @@ module Fog
         #  <Fog::AWS::Compute::VpnGateways
         #    filters={}
         #    [
-        #      <Fog::Compute::AWS::VpnGateway
+        #      <Fog::AWS::Compute::VpnGateway
         #        vpn_gateway_id="vgw-11223344",
         #        amazon_side_asn=65001,
         #        attachments=[],

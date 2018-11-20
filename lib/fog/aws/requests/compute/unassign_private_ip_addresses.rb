@@ -19,7 +19,7 @@ module Fog
           request({
             'Action'  => 'UnassignPrivateIpAddresses',
             'NetworkInterfaceId' => network_interface_id,
-            :parser   => Fog::Parsers::Compute::AWS::Basic.new
+            :parser   => Fog::Parsers::AWS::Compute::Basic.new
           }.merge(Fog::AWS.indexed_param('PrivateIpAddress.%d', [*private_ip_addresses])))
         end
       end

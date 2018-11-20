@@ -21,7 +21,7 @@ module Fog
             'Action'            => 'EnableVgwRoutePropagation',
             'GatewayId'         => vpn_gateway_id,
             'RouteTableId'      => route_table_id,
-            :parser => Fog::Parsers::Compute::AWS::Basic.new
+            :parser => Fog::Parsers::AWS::Compute::Basic.new
           )
         end
       end

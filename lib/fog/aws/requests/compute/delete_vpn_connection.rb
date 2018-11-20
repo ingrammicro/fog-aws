@@ -19,7 +19,7 @@ module Fog
           request(
             'Action'       => 'DeleteVpnConnection',
             'VpnConnectionId' => vpn_connection_id,
-            :parser => Fog::Parsers::Compute::AWS::Basic.new
+            :parser => Fog::Parsers::AWS::Compute::Basic.new
           )
         end
       end

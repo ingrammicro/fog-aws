@@ -33,7 +33,7 @@ module Fog
           request({
             'Action' => 'DescribeCustomerGateways',
             :idempotent => true,
-            :parser => Fog::Parsers::Compute::AWS::DescribeCustomerGateways.new
+            :parser => Fog::Parsers::AWS::Compute::DescribeCustomerGateways.new
           }.merge!(params))
         end
       end

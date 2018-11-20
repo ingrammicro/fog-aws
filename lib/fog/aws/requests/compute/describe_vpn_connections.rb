@@ -47,7 +47,7 @@ module Fog
           request({
             'Action' => 'DescribeVpnConnections',
             :idempotent => true,
-            :parser => Fog::Parsers::Compute::AWS::DescribeVpnConnections.new
+            :parser => Fog::Parsers::AWS::Compute::DescribeVpnConnections.new
           }.merge!(params))
         end
       end

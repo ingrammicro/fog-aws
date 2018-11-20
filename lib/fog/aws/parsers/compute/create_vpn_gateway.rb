@@ -1,7 +1,7 @@
 module Fog
   module Parsers
     module AWS
-      class Compute
+      module Compute
         require 'fog/aws/parsers/compute/vpn_gateway_parser'
 
         class CreateVpnGateway < VpnGatewayParser

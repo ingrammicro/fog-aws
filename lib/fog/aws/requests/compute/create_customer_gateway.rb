@@ -31,7 +31,7 @@ module Fog
             'Action'        => 'CreateCustomerGateway',
             'Type'          => type,
             'IpAddress'     => ip_address,
-            :parser         => Fog::Parsers::Compute::AWS::CreateCustomerGateway.new
+            :parser         => Fog::Parsers::AWS::Compute::CreateCustomerGateway.new
           }.merge!(options))
         end
       end

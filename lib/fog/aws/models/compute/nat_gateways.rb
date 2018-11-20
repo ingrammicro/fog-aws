@@ -6,7 +6,7 @@ module Fog
       class NatGateways < Fog::Collection
         attribute :filters
 
-        model Fog::Compute::AWS::NatGateway
+        model Fog::AWS::Compute::NatGateway
 
         # Creates a new nat gateway
         #
@@ -17,7 +17,7 @@ module Fog
         # Returns the details of the new NatGateway
         #
         #>> AWS.nat_gateways.new
-        #=>   <Fog::Compute::AWS::NatGateway
+        #=>   <Fog::AWS::Compute::NatGateway
         #id=nil,
         #attachment_set=nil,
         #tag_set=nil
@@ -38,10 +38,10 @@ module Fog
         # Returns an array of all NatGateways
         #
         #>> AWS.nat_gateways.all
-        #<Fog::Compute::AWS::NatGateways
+        #<Fog::AWS::Compute::NatGateways
         #filters={}
         #[
-        #<Fog::Compute::AWS::NatGateway
+        #<Fog::AWS::Compute::NatGateway
         #id="igw-some-id",
         #attachment_set={"vpcId"=>"vpc-some-id", "state"=>"available"},
         #tag_set={}
@@ -68,7 +68,7 @@ module Fog
         # ==== Returns
         #
         #>> AWS.nat_gateways.get("igw-12345678")
-        #=>   <Fog::Compute::AWS::NatGateway
+        #=>   <Fog::AWS::Compute::NatGateway
         #id="igw-12345678",
         #attachment_set={"vpcId"=>"vpc-12345678", "state"=>"available"},
         #tag_set={}
