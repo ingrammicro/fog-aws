@@ -49,7 +49,7 @@ module Fog
             'CustomerGatewayId' => customer_gateway_id,
             'VpnGatewayId'      => vpn_gateway_id,
             'Type'              => type,
-            :parser             => Fog::Parsers::Compute::AWS::CreateVpnConnection.new
+            :parser             => Fog::Parsers::AWS::Compute::CreateVpnConnection.new
           }.merge!(options))
         end
       end

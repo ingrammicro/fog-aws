@@ -33,7 +33,7 @@ module Fog
           request({
             'Action'        => 'CreateVpnGateway',
             'Type'          => type,
-            :parser         => Fog::Parsers::Compute::AWS::CreateVpnGateway.new
+            :parser         => Fog::Parsers::AWS::Compute::CreateVpnGateway.new
           }.merge!(options))
         end
       end

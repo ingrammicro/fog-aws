@@ -1,7 +1,7 @@
 module Fog
   module Parsers
     module AWS
-      class Compute
+      module Compute
         class CustomerGatewayParser < Fog::Parsers::Base
           def reset_customer_gateway
             @customer_gateway = { 'tagSet' => {} }

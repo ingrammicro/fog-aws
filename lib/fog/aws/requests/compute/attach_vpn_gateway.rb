@@ -23,7 +23,7 @@ module Fog
             'VpcId'         => vpc_id,
             'VpnGatewayId'  => vpn_gateway_id,
             :idempotent   => true,
-            :parser => Fog::Parsers::Compute::AWS::AttachVpnGateway.new # AttachVpnGateway.new
+            :parser => Fog::Parsers::AWS::Compute::AttachVpnGateway.new # AttachVpnGateway.new
           )
         end
       end

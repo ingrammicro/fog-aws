@@ -30,7 +30,7 @@ module Fog
             'Action'        => 'CreateNatGateway',
             'SubnetId'      => subnetId,
             'AllocationId'  => allocationId,
-            :parser         => Fog::Parsers::Compute::AWS::CreateNatGateway.new
+            :parser         => Fog::Parsers::AWS::Compute::CreateNatGateway.new
           })
         end
       end
@@ -41,11 +41,11 @@ module Fog
           if subnetId
             subnet = self.data[:subnets].find{ |s| s['subnetId'] == subnetId }
             if subnet.nil?
-              raise Fog::Compute::AWS::Error.new("Unknown subnet '#{subnetId}' specified")
+              raise Fog::AWS::Compute::Error.new("Unknown subnet '#{subnetId}' specified")
             else
               allocation = self.data[:address].find{ |s| s['allocationId'] == allocationId }
               if allocation.nil?
-                raise Fog::Compute::AWS::Error.new("Unknown allocation '#{allocationId}' specified")
+                raise Fog::AWS::Compute::Error.new("Unknown allocation '#{allocationId}' specified")
               else
                 id = Fog::AWS::Mock.nat_gateway_id
                 addresses = {}

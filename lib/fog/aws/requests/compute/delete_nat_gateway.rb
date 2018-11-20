@@ -19,7 +19,7 @@ module Fog
           request(
             'Action' => 'DeleteNatGateway',
             'NatGatewayId' => nat_gateway_id,
-            :parser => Fog::Parsers::Compute::AWS::Basic.new
+            :parser => Fog::Parsers::AWS::Compute::Basic.new
           )
         end
       end
@@ -38,7 +38,7 @@ module Fog
             else
               message = 'MissingParameter => '
               message << 'The request must contain the parameter nat_gateway_id'
-              raise Fog::Compute::AWS::Error.new(message)
+              raise Fog::AWS::Compute::Error.new(message)
             end
           end
         end

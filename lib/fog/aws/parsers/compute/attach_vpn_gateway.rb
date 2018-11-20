@@ -1,7 +1,7 @@
 module Fog
   module Parsers
     module AWS
-      class Compute
+      module Compute
         class AttachVpnGateway < Fog::Parsers::Base
 
           def reset

@@ -1,7 +1,7 @@
 module Fog
   module Parsers
     module AWS
-      class Compute
+      module Compute
         class VpnGatewayParser < Fog::Parsers::Base
           def reset_vpn_gateway
             @vpn_gateway = { 'attachments' => {}, 'tagSet' => {} }

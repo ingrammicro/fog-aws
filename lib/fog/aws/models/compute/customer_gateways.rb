@@ -6,7 +6,7 @@ module Fog
       class CustomerGateways < Fog::Collection
         attribute :filters
 
-        model Fog::Compute::AWS::CustomerGateway
+        model Fog::AWS::Compute::CustomerGateway
 
         # Creates a new customer gateway
         #
@@ -17,7 +17,7 @@ module Fog
         # Returns the details of the new customer gateway
         #
         #>> AWS.customer_gateways.new(type: "ipsec.1", ip_address: "11.22.33.44", options)
-        #    <Fog::Compute::AWS::CustomerGateway
+        #    <Fog::AWS::Compute::CustomerGateway
         #      customer_gateway_id="cgw-11223344",
         #      ip_address: "11.22.33.44"
         #      bgp_asn=65000,
@@ -44,7 +44,7 @@ module Fog
         #  <Fog::AWS::Compute::CustomerGateways
         #    filters={}
         #    [
-        #      <Fog::Compute::AWS::CustomerGateway
+        #      <Fog::AWS::Compute::CustomerGateway
         #        customer_gateway_id="cgw-11223344",
         #        ip_address: "11.22.33.44"
         #        bgp_asn=65000,
