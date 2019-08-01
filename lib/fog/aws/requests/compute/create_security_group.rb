@@ -59,6 +59,10 @@ module Fog
           }
           response
         end
+
+        def duplicate?(name, vpc_id)
+          data[:security_groups].find{ |sg_name, data| sg_name == name && data['vpcId'] == vpc_id }
+        end
       end
     end
   end

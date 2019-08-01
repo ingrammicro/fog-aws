@@ -37,8 +37,8 @@ Shindo.tests('AWS::EFS | file systems', ['aws', 'efs']) do
     else
       vpc = Fog::Compute[:aws].vpcs.first
       subnet = vpc.subnets.first
-      default_security_group = Fog::Compute[:aws].security_groups.detect { |sg| sg.description == 'default VPC security group' }
     end
+    default_security_group = Fog::Compute[:aws].security_groups.detect { |sg| sg.description == 'default VPC security group' }
 
     security_group = Fog::Compute[:aws].security_groups.create(
       :vpc_id      => vpc.id,
